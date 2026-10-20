@@ -1,0 +1,312 @@
+package bip32pqzkp
+
+import host "github.com/roasbeef/go-zkvm/host"
+
+// DefaultGuestPath is the packaged guest binary path used by the demo commands
+// when the caller does not override it explicitly.
+const DefaultGuestPath = "./bip32-platform-latest.bin"
+
+// DefaultHardenedXPubGuestPath is the packaged guest binary path used by the
+// hardened-xpub demo commands when the caller does not override it explicitly.
+const DefaultHardenedXPubGuestPath = "./hardened-xpub-platform-latest.bin"
+
+// DefaultHardenedXPrivGuestPath is the packaged guest binary path used by the
+// hardened-xpriv demo commands when the caller does not override it
+// explicitly.
+const DefaultHardenedXPrivGuestPath = "./hardened-xpriv-platform-latest.bin"
+
+const (
+	// bip32HardenedKeyStart mirrors bip32.HardenedKeyStart for use in
+	// host-side witness assembly and validation.
+	bip32HardenedKeyStart = 0x8000_0000
+
+	// bip86Purpose is the hardened purpose index for BIP-86 Taproot
+	// derivation paths (86' = 0x80000056).
+	bip86Purpose = bip32HardenedKeyStart + 86
+
+	// witnessFlagRequireBIP86 is the flags-field bit that enables BIP-86
+	// path-shape enforcement inside the guest. This mirrors the guest-side
+	// constant flagRequireBIP86.
+	witnessFlagRequireBIP86 = 1
+
+	// publicClaimSize is the expected byte length of the structured
+	// journal committed by the guest: 4 (version) + 4 (flags) + 32
+	// (output key) + 32 (path commitment) = 72 bytes.
+	publicClaimSize = 72
+)
+
+// PublicClaimVersion is the current demo-specific journal schema version.
+const PublicClaimVersion = 1
+
+// defaultBIP32Seed is the built-in test vector seed from BIP-32 test vector 1.
+// This is used when the caller selects --use-test-vector instead of providing
+// explicit witness material.
+var defaultBIP32Seed = []byte{
+	0x00, 0x01, 0x02, 0x03,
+	0x04, 0x05, 0x06, 0x07,
+	0x08, 0x09, 0x0a, 0x0b,
+	0x0c, 0x0d, 0x0e, 0x0f,
+}
+
+// defaultBIP32Path is the built-in test vector derivation path:
+// m/86'/0'/0'/0/0 (the standard BIP-86 Taproot path for the first receive
+// address on mainnet).
+var defaultBIP32Path = []uint32{
+	bip32HardenedKeyStart + 86,
+	bip32HardenedKeyStart,
+	bip32HardenedKeyStart,
+	0,
+	0,
+}
+
+// defaultReducedParentPath is the built-in parent xpriv used by the reduced
+// proof variants: m/86'/0'.
+var defaultReducedParentPath = []uint32{
+	bip86Purpose,
+	bip32HardenedKeyStart,
+}
+
+// defaultReducedChildPath is the hardened child path used by the reduced
+// proof variants. Combined with defaultReducedParentPath, it yields the
+// account-level child at m/86'/0'/0'.
+var defaultReducedChildPath = []uint32{
+	bip32HardenedKeyStart,
+}
+
+// Runner owns the demo-specific host flow on top of the reusable go-zkvm host
+// package.
+type Runner struct {
+	client *host.Client
+}
+
+// WitnessConfig describes the private witness material fed into the guest.
+type WitnessConfig struct {
+	// SeedHex is the private seed encoded as hex.
+	SeedHex string
+
+	// Path is the private derivation path in slash or comma form.
+	Path string
+
+	// UseTestVector selects the built-in demo witness instead of
+	// explicit input.
+	UseTestVector bool
+
+	// RequireBIP86 requests BIP-86 path-shape enforcement inside the claim.
+	RequireBIP86 bool
+}
+
+// ExecuteConfig describes one execute-only run of the guest.
+type ExecuteConfig struct {
+	// GuestPath points at the packaged guest `.bin` artifact to load.
+	GuestPath string
+
+	// Witness carries the private input to feed into guest stdin.
+	Witness WitnessConfig
+}
+
+// ProveConfig describes one prove run plus the artifact paths to write.
+type ProveConfig struct {
+	// GuestPath points at the packaged guest `.bin` artifact to load.
+	GuestPath string
+
+	// Witness carries the private input to feed into guest stdin.
+	Witness WitnessConfig
+
+	// ReceiptKind selects the prove-time receipt compression level.
+	ReceiptKind host.ReceiptKind
+
+	// ReceiptOutputPath is where the serialized receipt should be written.
+	ReceiptOutputPath string
+
+	// ClaimOutputPath is where the human-readable claim artifact should go.
+	ClaimOutputPath string
+}
+
+// VerifyExpectations describes optional verifier-side checks beyond receipt
+// verification against the image ID.
+type VerifyExpectations struct {
+	// PubKeyHex is the expected Taproot output key as lowercase hex.
+	PubKeyHex string
+
+	// PathCommitmentHex is the expected path commitment as lowercase hex.
+	PathCommitmentHex string
+
+	// Path is the expected private derivation path if known directly.
+	Path string
+
+	// RequireBIP86 checks the verifier-visible BIP-86 policy bit when set.
+	RequireBIP86 *bool
+}
+
+// VerifyConfig describes one verification run against a stored receipt.
+type VerifyConfig struct {
+	// GuestPath points at the packaged guest `.bin` artifact to load.
+	GuestPath string
+
+	// ReceiptInputPath is the serialized receipt to verify.
+	ReceiptInputPath string
+
+	// ClaimInputPath is an optional emitted `claim.json` to cross-check.
+	ClaimInputPath string
+
+	// Expectations holds optional direct public checks.
+	Expectations VerifyExpectations
+}
+
+// PublicClaim is the structured 72-byte journal committed by the guest.
+type PublicClaim struct {
+	// Version identifies the serialized claim format.
+	Version uint32
+
+	// Flags records verifier-visible policy bits.
+	Flags uint32
+
+	// TaprootOutputKey is the final x-only Taproot output key.
+	TaprootOutputKey [32]byte
+
+	// PathCommitment commits to the private derivation path.
+	PathCommitment [32]byte
+}
+
+// ClaimFile is the canonical human-readable verifier artifact written
+// alongside the receipt.
+type ClaimFile struct {
+	// SchemaVersion identifies the JSON artifact schema.
+	SchemaVersion uint32 `json:"schema_version"`
+
+	// ImageID is the guest image ID used during prove and verify.
+	ImageID string `json:"image_id"`
+
+	// ClaimVersion mirrors the journal claim version.
+	ClaimVersion uint32 `json:"claim_version"`
+
+	// ClaimFlags mirrors the journal policy flags.
+	ClaimFlags uint32 `json:"claim_flags"`
+
+	// RequireBIP86 mirrors the verifier-visible BIP-86 policy bit.
+	RequireBIP86 bool `json:"require_bip86"`
+
+	// TaprootOutputKey is the final x-only output key as lowercase hex.
+	TaprootOutputKey string `json:"taproot_output_key"`
+
+	// PathCommitment is the committed path digest as lowercase hex.
+	PathCommitment string `json:"path_commitment"`
+
+	// JournalHex is the raw committed journal as lowercase hex.
+	JournalHex string `json:"journal_hex"`
+
+	// JournalSizeBytes is the byte length of the committed journal.
+	JournalSizeBytes int `json:"journal_size_bytes"`
+
+	// ProofSealBytes is the size of the proof seal in bytes. It is
+	// informative metadata rather than a compatibility guarantee.
+	ProofSealBytes uint64 `json:"proof_seal_bytes"`
+
+	// ReceiptEncoding names the serialized receipt encoding expected for
+	// the receipt artifact.
+	ReceiptEncoding string `json:"receipt_encoding"`
+}
+
+// ExecuteReport summarizes the public results of an execute-only run.
+type ExecuteReport struct {
+	// GuestPath is the guest artifact path used for the run.
+	GuestPath string
+
+	// GuestSize is the packaged guest size in bytes.
+	GuestSize int
+
+	// ImageID is the computed image ID for the loaded guest.
+	ImageID string
+
+	// UsingTestVector reports whether the built-in witness was used.
+	UsingTestVector bool
+
+	// Claim is the decoded public claim committed by the guest.
+	Claim PublicClaim
+
+	// ExitCode is the guest exit code summary from execute-only mode.
+	ExitCode string
+
+	// JournalSize is the size of the committed journal in bytes.
+	JournalSize int
+
+	// SegmentCount is the number of zkVM segments executed.
+	SegmentCount uint32
+
+	// SessionRows is the total row count reported by the session.
+	SessionRows uint64
+}
+
+// ProveReport summarizes a prove run and the generated artifacts.
+type ProveReport struct {
+	// GuestPath is the guest artifact path used for the proof.
+	GuestPath string
+
+	// GuestSize is the packaged guest size in bytes.
+	GuestSize int
+
+	// ImageID is the computed image ID for the loaded guest.
+	ImageID string
+
+	// UsingTestVector reports whether the built-in witness was used.
+	UsingTestVector bool
+
+	// Claim is the decoded public claim committed by the guest.
+	Claim PublicClaim
+
+	// ReceiptOutputPath is where the receipt artifact was written.
+	ReceiptOutputPath string
+
+	// ClaimOutputPath is where the readable claim artifact was written.
+	ClaimOutputPath string
+
+	// JournalSize is the size of the committed journal in bytes.
+	JournalSize int
+
+	// ReceiptEncoding names the serialized receipt encoding.
+	ReceiptEncoding string
+
+	// ReceiptKind identifies the concrete receipt representation
+	// returned by the prover.
+	ReceiptKind host.ReceiptKind
+
+	// ProverName identifies the selected proving backend.
+	ProverName string
+
+	// SealBytes is the proof seal size in bytes.
+	SealBytes uint64
+}
+
+// VerifyReport summarizes the result of verifying a stored receipt.
+type VerifyReport struct {
+	// GuestPath is the guest artifact path used for verification.
+	GuestPath string
+
+	// GuestSize is the packaged guest size in bytes.
+	GuestSize int
+
+	// ImageID is the computed image ID for the loaded guest.
+	ImageID string
+
+	// Claim is the decoded public claim recovered from the receipt.
+	Claim PublicClaim
+
+	// ClaimInputPath is the optional `claim.json` used for comparison.
+	ClaimInputPath string
+
+	// ReceiptInputPath is the serialized receipt that was verified.
+	ReceiptInputPath string
+
+	// JournalSize is the size of the committed journal in bytes.
+	JournalSize int
+
+	// ReceiptEncoding names the serialized receipt encoding.
+	ReceiptEncoding string
+
+	// ReceiptKind identifies the concrete receipt representation
+	// that was verified.
+	ReceiptKind host.ReceiptKind
+
+	// SealBytes is the proof seal size in bytes.
+	SealBytes uint64
+}
