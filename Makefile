@@ -62,9 +62,13 @@ define print
 	@echo $(GREEN)$1$(NC)
 endef
 
-.PHONY: all check-tools hostcheck platform-standalone host-ffi bip32-platform-latest batch-platform-latest hardened-xpub-platform-latest hardened-xpriv-platform-latest execute prove verify execute-batch prove-batch verify-batch derive-batch-inclusion bundle-batch-inclusion-chain prove-parent-batch derive-parent-batch-inclusion verify-nested-batch run-nested-batch-plan execute-hardened-xpub prove-hardened-xpub verify-hardened-xpub execute-hardened-xpriv prove-hardened-xpriv verify-hardened-xpriv fmt fmt-check tidy tidy-check local-custom-gcl install-custom-gcl build-native-linter lint-native lint native-check clean
+.PHONY: all dashboard check-tools hostcheck platform-standalone host-ffi bip32-platform-latest batch-platform-latest hardened-xpub-platform-latest hardened-xpriv-platform-latest execute prove verify execute-batch prove-batch verify-batch derive-batch-inclusion bundle-batch-inclusion-chain prove-parent-batch derive-parent-batch-inclusion verify-nested-batch run-nested-batch-plan execute-hardened-xpub prove-hardened-xpub verify-hardened-xpub execute-hardened-xpriv prove-hardened-xpriv verify-hardened-xpriv fmt fmt-check tidy tidy-check local-custom-gcl install-custom-gcl build-native-linter lint-native lint native-check clean
 
 all: bip32-platform-latest
+
+dashboard:
+	@echo "Starting VeriTx Visual Dashboard..."
+	$(GO) run ./cmd/dashboard
 
 platform-standalone:
 	$(MAKE) -C $(RISC0_DIR)/examples/c-guest platform-standalone
