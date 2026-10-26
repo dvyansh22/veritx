@@ -3,62 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VeriTx — Post-Quantum Zero-Knowledge Bitcoin Taproot Prover</title>
-  <meta name="description" content="Visual Interactive Dashboard for VeriTx: Post-Quantum Zero-Knowledge BIP-32 Seed Knowledge Prover for Bitcoin Taproot Spends.">
+  <title>VeriTx — Post-Quantum Zero-Knowledge Taproot Engine</title>
+  <meta name="description" content="Interactive Procedural Demonstration Dashboard for VeriTx: Zero-Knowledge BIP-32 Seed Knowledge Verification for Bitcoin Taproot.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
-  <!-- Background Glow Accents -->
-  <div class="ambient-glow glow-cyan"></div>
-  <div class="ambient-glow glow-purple"></div>
-  <div class="ambient-glow glow-amber"></div>
+<body class="light-theme">
 
-  <!-- Main Navigation Header -->
+  <!-- Application Header -->
   <header class="app-header">
     <div class="header-container">
       <div class="brand-group">
-        <div class="logo-shield">
-          <svg viewBox="0 0 24 24" fill="none" class="shield-icon">
-            <path d="M12 2L3 7V12C3 17.5 7 21.5 12 23C17 21.5 21 17.5 21 12V7L12 2Z" stroke="url(#cyan-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 12L11 14L15 9" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="cyan-purple" x1="3" y1="2" x2="21" y2="23" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#00f2fe"/>
-                <stop offset="1" stop-color="#7928ca"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+        <div class="brand-logo-mark">V</div>
         <div class="brand-text">
-          <div class="brand-title">Veri<span class="gradient-text">Tx</span></div>
-          <div class="brand-subtitle">POST-QUANTUM BITCOIN ZK PROVER</div>
+          <div class="brand-title">VeriTx <span style="font-weight: 400; color: var(--text-muted); font-size: 0.9rem;">/ Prover Engine</span></div>
+          <div class="brand-badge">BIP-32 Post-Quantum ZK Prover</div>
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
+      <!-- Segmented Navigation Tabs -->
       <nav class="nav-tabs" id="navTabs">
-        <button class="nav-tab active" data-tab="tab-overview" id="btn-tab-overview">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Overview & Defense
-        </button>
-        <button class="nav-tab" data-tab="tab-prover" id="btn-tab-prover">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Interactive Prover
+        <button class="nav-tab active" data-tab="tab-stepper" id="btn-tab-stepper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          1. Procedural Execution Trace
         </button>
         <button class="nav-tab" data-tab="tab-lanes" id="btn-tab-lanes">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          Proof Lanes & Metrics
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          2. Proof Lanes & Benchmarks
         </button>
         <button class="nav-tab" data-tab="tab-batch" id="btn-tab-batch">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          Recursive Batching
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          3. Recursive Batch Merkle Tree
         </button>
         <button class="nav-tab" data-tab="tab-verifier" id="btn-tab-verifier">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Verification Artifacts
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          4. Artifact & Tamper Verifier
         </button>
       </nav>
 
@@ -66,11 +47,11 @@
       <div class="system-status">
         <div class="status-pill" id="status-metal">
           <span class="status-dot green"></span>
-          <span class="status-label">Metal GPU: Active</span>
+          <span>Apple Silicon Metal</span>
         </div>
-        <div class="status-pill" id="status-zkvm">
-          <span class="status-dot cyan"></span>
-          <span class="status-label">zkVM: risc0 v1compat</span>
+        <div class="status-pill">
+          <span class="status-dot blue"></span>
+          <span>zkVM: risc0 v1compat</span>
         </div>
       </div>
     </div>
@@ -78,570 +59,645 @@
 
   <!-- Main Container -->
   <main class="main-content">
-    
-    <!-- TAB 1: OVERVIEW & QUANTUM DEFENSE MATRIX -->
-    <section class="tab-pane active" id="tab-overview">
-      <div class="hero-banner">
-        <div class="hero-content">
-          <div class="badge-tag">REVOLUTIONARY POST-QUANTUM MIGRATION</div>
-          <h1>Securing Bitcoin Beyond the <span class="gradient-text">secp256k1 Horizon</span></h1>
-          <p class="hero-desc">
-            When large-scale quantum computers running Shor’s algorithm break classical Schnorr & ECDSA signatures,
-            raw public-key spends become vulnerable. <strong>VeriTx</strong> implements zero-knowledge <em>seed-lifting</em>:
-            proving knowledge of the original BIP-32 seed inside a STARK-based zkVM without ever revealing the master secret.
-          </p>
-          <div class="hero-actions">
-            <button class="btn btn-primary" onclick="switchTab('tab-prover')">
+
+    <!-- ==========================================================================
+         TAB 1: PROCEDURAL EXECUTION STEPPER
+         ========================================================================== -->
+    <section class="tab-pane active" id="tab-stepper">
+      
+      <!-- Stepper Navigation Track -->
+      <div class="stepper-nav" id="stepperNav">
+        <div class="step-node active" data-step="0" onclick="goToStep(0)">
+          <div class="step-circle">1</div>
+          <div class="step-info">
+            <span class="step-num-label">Phase 01</span>
+            <span class="step-name">Witness & Path</span>
+          </div>
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step-node" data-step="1" onclick="goToStep(1)">
+          <div class="step-circle">2</div>
+          <div class="step-info">
+            <span class="step-num-label">Phase 02</span>
+            <span class="step-name">Master Key (HMAC)</span>
+          </div>
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step-node" data-step="2" onclick="goToStep(2)">
+          <div class="step-circle">3</div>
+          <div class="step-info">
+            <span class="step-num-label">Phase 03</span>
+            <span class="step-name">HD Tree Traversal</span>
+          </div>
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step-node" data-step="3" onclick="goToStep(3)">
+          <div class="step-circle">4</div>
+          <div class="step-info">
+            <span class="step-num-label">Phase 04</span>
+            <span class="step-name">Taproot Tweaking</span>
+          </div>
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step-node" data-step="4" onclick="goToStep(4)">
+          <div class="step-circle">5</div>
+          <div class="step-info">
+            <span class="step-num-label">Phase 05</span>
+            <span class="step-name">Journal & STARK Proof</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-Column Procedural Workspace -->
+      <div class="procedural-grid">
+        
+        <!-- Left: Input Controls & Controls Bar -->
+        <div class="controls-card card">
+          <div class="card-header">
+            <span class="card-title">Derivation Configuration</span>
+            <span class="badge badge-gray" id="preset-badge">Vector 1</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <span>Standard Presets</span>
+            </label>
+            <select class="form-select" id="preset-select" style="width: 100%;" onchange="loadPreset(this.value)">
+              <option value="vector1">BIP-32 Test Vector 1 (m/86'/0'/0'/0/0)</option>
+              <option value="vector2">BIP-32 Test Vector 2 (Custom 512b)</option>
+              <option value="hardened_sample">Hardened-Only Test Vector (m/86'/0'/0')</option>
+              <option value="random">Generate Random 256-bit Seed</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="input-seed">
+              <span>Private Seed (Hex)</span>
+              <span class="form-helper" id="seed-len-label">16 bytes</span>
+            </label>
+            <input type="text" id="input-seed" class="form-input mono" spellcheck="false" value="000102030405060708090a0b0c0d0e0f">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="input-path">
+              <span>BIP-32 Path</span>
+              <span class="form-helper">BIP-86 Taproot</span>
+            </label>
+            <input type="text" id="input-path" class="form-input mono" spellcheck="false" value="m/86'/0'/0'/0/0">
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" id="check-bip86" checked>
+              <span>Enforce BIP-86 Path Policy (Flag 0x01)</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Receipt Kind</label>
+            <select class="form-select" id="select-receipt-kind" style="width: 100%;">
+              <option value="composite">Composite (Fast Prover, ~1.8 MB)</option>
+              <option value="succinct">Succinct (Recursive SNARK, ~223 KB)</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <button class="btn btn-primary" style="width: 100%;" id="btn-run-derivation" onclick="executeDerivationAndTrace()">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              Launch Live Prover
-            </button>
-            <button class="btn btn-secondary" onclick="switchTab('tab-batch')">
-              Explore Batch Aggregation
+              Execute Derivation & Trace
             </button>
           </div>
+
+          <div class="playback-controls">
+            <button class="btn btn-secondary btn-sm" style="flex: 1;" onclick="prevStep()">◀ Prev Step</button>
+            <button class="btn btn-secondary btn-sm" style="flex: 1;" id="btn-auto-step" onclick="toggleAutoStep()">▶ Auto-Play</button>
+            <button class="btn btn-secondary btn-sm" style="flex: 1;" onclick="nextStep()">Next Step ▶</button>
+          </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="quantum-threat-card glass-panel">
-            <div class="panel-header">
-              <span class="dot-indicator red"></span>
-              <h4>The Quantum Threat vs. VeriTx Shield</h4>
+        <!-- Right: Step-by-Step Procedural View -->
+        <div class="step-content-card card">
+          
+          <!-- STEP 0: Witness & Path Ingestion -->
+          <div class="step-pane-detail active" id="pane-step-0">
+            <div class="detail-header">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Phase 01: Witness & Derivation Path Ingestion</h3>
+                <span class="badge badge-purple">zkVM Stdin Ingestion</span>
+              </div>
+              <p>The prover ingests the high-entropy seed and BIP-32 path into the isolated RISC Zero guest execution memory.</p>
             </div>
-            <div class="comparison-grid">
-              <div class="comparison-column threat">
-                <div class="col-title">Classical Bitcoin Spend</div>
-                <div class="threat-item">
-                  <span class="cross">✕</span>
-                  <div>
-                    <strong>secp256k1 Signature</strong>
-                    <p>Shor's Algorithm breaks discrete log in polynomial time ($O(n^3)$).</p>
-                  </div>
-                </div>
-                <div class="threat-item">
-                  <span class="cross">✕</span>
-                  <div>
-                    <strong>Public Key Leaked</strong>
-                    <p>Once spent or exposed, private key can be computed by quantum adversary.</p>
-                  </div>
-                </div>
-                <div class="threat-item">
-                  <span class="cross">✕</span>
-                  <div>
-                    <strong>Immediate Theft</strong>
-                    <p>Adversary signs fraudulent transaction bypassing original owner.</p>
-                  </div>
-                </div>
-              </div>
 
-              <div class="comparison-column defense">
-                <div class="col-title">VeriTx ZK-STARK Spend</div>
-                <div class="defense-item">
-                  <span class="check">✓</span>
-                  <div>
-                    <strong>HMAC-SHA512 Preimage</strong>
-                    <p>One-way function with 256-bit post-quantum security against Grover ($2^{256}$).</p>
-                  </div>
-                </div>
-                <div class="defense-item">
-                  <span class="check">✓</span>
-                  <div>
-                    <strong>Private Seed Kept Hidden</strong>
-                    <p>Witness never leaves local machine. Only 72-byte public claim is revealed.</p>
-                  </div>
-                </div>
-                <div class="defense-item">
-                  <span class="check">✓</span>
-                  <div>
-                    <strong>Transparent STARK Proof</strong>
-                    <p>No trusted setup, post-quantum transparent proof verified in ~0.10s.</p>
-                  </div>
-                </div>
+            <div class="math-formula-box">
+              <strong>Mathematical Invariant:</strong> The private witness $\mathcal{W} = (s, \mathbf{p})$ stays inside the prover boundary. The guest computes a domain-separated commitment to the path:
+              <br>
+              <code>PathCommitment C = SHA256("bip32-pq-zkp:path:v1" || len_le32 || p0_le32 || p1_le32 ...)</code>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Ingested Seed Entropy (Private Witness)</span>
+                <span class="badge badge-gray" id="entropy-bytes-badge">16 Bytes</span>
               </div>
+              <div class="code-box" id="step0-seed-display">000102030405060708090a0b0c0d0e0f</div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Parsed Path Segments (Hardened Flags)</span>
+              </div>
+              <div class="code-box" id="step0-path-parsed">[86' (Hardened: 0x80000056), 0' (0x80000000), 0' (0x80000000), 0 (0x00000000), 0 (0x00000000)]</div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Public Path Commitment Hash (C)</span>
+                <button class="copy-btn" onclick="copyText('step0-path-commitment')">Copy</button>
+              </div>
+              <div class="code-box highlight" id="step0-path-commitment">4c7de33d397de2c231e7c2a7f53e5b581ee3c20073ea79ee4afaab56de11f74b</div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Architectural Workflow Flowchart -->
-      <div class="section-title-wrap">
-        <h2>End-to-End Cryptographic Architecture</h2>
-        <p>From private offline seed to on-chain verified Taproot output key</p>
-      </div>
+          <!-- STEP 1: Master Key Generation -->
+          <div class="step-pane-detail" id="pane-step-1">
+            <div class="detail-header">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Phase 02: Master Key Generation (HMAC-SHA512)</h3>
+                <span class="badge badge-amber">Post-Quantum One-Way Primitive</span>
+              </div>
+              <p>The root master key is derived using HMAC-SHA512 with the canonical constant salt <code>"Bitcoin seed"</code>.</p>
+            </div>
 
-      <div class="pipeline-grid">
-        <div class="pipeline-card glass-panel">
-          <div class="step-num">01</div>
-          <div class="step-icon cyan-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <div class="math-formula-box">
+              <strong>Post-Quantum Resistance Core:</strong>
+              <br>
+              <code>HMAC-SHA512(key="Bitcoin seed", data=seed) = IL (32B Private Key) || IR (32B Master Chain Code)</code>
+              <br>
+              Because SHA-512 is a hash function, it retains <strong>256 bits of security</strong> against quantum Grover searches ($2^{256}$ operations).
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Master Extended Chain Code (Entropy Key for Child Derivations)</span>
+              </div>
+              <div class="code-box" id="step1-chain-code">873dff81c02f525623fd1fe5167eac3a55a049de3d314bb42ee227ffed37d508</div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Master Public Key (x-only coordinate)</span>
+              </div>
+              <div class="code-box" id="step1-xonly-key">3b3557e4e1a6...</div>
+            </div>
           </div>
-          <h3>Private Witness</h3>
-          <p>Host prepares 16-64 byte seed and derivation path vector (e.g. <code>m/86'/0'/0'/0/0</code>). Never transmitted outside prover.</p>
-          <div class="data-tag">Witness Stdin</div>
-        </div>
 
-        <div class="pipeline-connector">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none"/></svg>
-        </div>
+          <!-- STEP 2: HD Tree Traversal (CKDpriv) -->
+          <div class="step-pane-detail" id="pane-step-2">
+            <div class="detail-header">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Phase 03: HD Child Key Derivation Walk (CKDpriv)</h3>
+                <span class="badge badge-blue">Iterative Child Derivation</span>
+              </div>
+              <p>The guest walks the derivation path hop-by-hop. Hardened indices pass <code>0x00 || ParentKey || Index</code> to HMAC-SHA512.</p>
+            </div>
 
-        <div class="pipeline-card glass-panel highlight-border">
-          <div class="step-num">02</div>
-          <div class="step-icon purple-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <div class="math-formula-box">
+              <strong>Child Key Derivation Formula:</strong>
+              <br>
+              Hardened: <code>HMAC-SHA512(ChainCode, 0x00 || ParentPriv || Index) = IL || IR</code>
+              <br>
+              <code>ChildPriv = (IL + ParentPriv) mod n</code>, <code>ChildChainCode = IR</code>
+            </div>
+
+            <div class="hops-timeline" id="step2-hops-list">
+              <!-- Dynamically populated hops -->
+            </div>
           </div>
-          <h3>zkVM Guest Execution</h3>
-          <p>TinyGo guest executes full BIP-32 HMAC-SHA512 derivation and BIP-86 Taproot tweaking inside the RISC Zero VM environment.</p>
-          <div class="data-tag purple">risc0 zkVM (v1compat)</div>
-        </div>
 
-        <div class="pipeline-connector">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none"/></svg>
-        </div>
+          <!-- STEP 3: BIP-86 Taproot Tweaking -->
+          <div class="step-pane-detail" id="pane-step-3">
+            <div class="detail-header">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Phase 04: BIP-86 Taproot Tweaking (Key-Spend Only)</h3>
+                <span class="badge badge-green">Consensus Taproot Spend</span>
+              </div>
+              <p>The leaf private key is converted to an x-only internal public key and tweaked via BIP-341 tagged hash.</p>
+            </div>
 
-        <div class="pipeline-card glass-panel">
-          <div class="step-num">03</div>
-          <div class="step-icon gold-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div class="math-formula-box">
+              <strong>BIP-86 Tweaking Relation:</strong>
+              <br>
+              <code>InternalKey P = lift_x_even(ChildPub)</code>
+              <br>
+              <code>t = TaggedHash("TapTweak", P)</code> (Script tree is null for BIP-86 key-path spend)
+              <br>
+              <code>OutputKey Q = P + t · G</code>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Internal Public Key (P) — 32 Bytes</span>
+              </div>
+              <div class="code-box" id="step3-internal-key">8724f200544f593846c3a868faa13cfc47fb29842e010758c0b95e6f79896434</div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Tagged Hash TapTweak(P) Scalar</span>
+              </div>
+              <div class="code-box" id="step3-taptweak-hash">8e93050...</div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Final On-Chain Taproot Output Key (Q)</span>
+                <button class="copy-btn" onclick="copyText('step3-output-key')">Copy</button>
+              </div>
+              <div class="code-box success" id="step3-output-key">00324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee6</div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Bitcoin Mainnet Taproot Address (Bech32m)</span>
+              </div>
+              <div class="code-box highlight" id="step3-address-mainnet">bc1pqqsqqzqqsqqqq...</div>
+            </div>
           </div>
-          <h3>Public Journal Commitment</h3>
-          <p>Guest commits deterministic 72-byte claim: version, flags (BIP-86 policy), Taproot Output Key ($K$), and Path Commitment ($C$).</p>
-          <div class="data-tag gold">72-Byte Public Journal</div>
-        </div>
 
-        <div class="pipeline-connector">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none"/></svg>
-        </div>
+          <!-- STEP 4: 72-Byte Claim & Journal Commitment -->
+          <div class="step-pane-detail" id="pane-step-4">
+            <div class="detail-header">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Phase 05: Public Claim Packing & zkVM STARK Proof</h3>
+                <span class="badge badge-purple">Public Journal (72 Bytes)</span>
+              </div>
+              <p>The guest commits the 72-byte deterministic public statement to the proof journal and produces the STARK receipt.</p>
+            </div>
 
-        <div class="pipeline-card glass-panel">
-          <div class="step-num">04</div>
-          <div class="step-icon green-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+            <!-- Visual Memory Map -->
+            <div class="journal-layout-container">
+              <div class="journal-blocks">
+                <div class="j-block b-version">
+                  <div class="j-block-title">Version</div>
+                  <div class="j-block-bytes">4 Bytes</div>
+                </div>
+                <div class="j-block b-flags">
+                  <div class="j-block-title">Flags</div>
+                  <div class="j-block-bytes">4 Bytes</div>
+                </div>
+                <div class="j-block b-key">
+                  <div class="j-block-title">Taproot Output Key (Q)</div>
+                  <div class="j-block-bytes">32 Bytes (8..39)</div>
+                </div>
+                <div class="j-block b-path">
+                  <div class="j-block-title">Path Commitment (C)</div>
+                  <div class="j-block-bytes">32 Bytes (40..71)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="data-display-row">
+              <div class="data-display-label">
+                <span>Raw 72-Byte Journal Stream (Public Proof Statement)</span>
+                <button class="copy-btn" onclick="copyText('step4-journal-raw')">Copy</button>
+              </div>
+              <div class="code-box mono" id="step4-journal-raw">010000000100000000324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee64c7de33d397de2c231e7c2a7f53e5b581ee3c20073ea79ee4afaab56de11f74b</div>
+            </div>
+
+            <div class="data-display-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div>
+                <div class="data-display-label"><span>Receipt Type</span></div>
+                <div class="code-box" id="step4-receipt-kind">Composite STARK Receipt</div>
+              </div>
+              <div>
+                <div class="data-display-label"><span>Verification Time</span></div>
+                <div class="code-box success">0.09s (Offline Validated)</div>
+              </div>
+            </div>
           </div>
-          <h3>STARK Receipt & Verify</h3>
-          <p>Prover generates STARK proof seal. Anyone with the binary Image ID can verify the proof in 100ms and authorise the transaction.</p>
-          <div class="data-tag green">Succinct / Composite Receipt</div>
+
+          <!-- Execution Console -->
+          <div class="console-box">
+            <div class="console-header">
+              <div class="console-title">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                zkVM Execution Runtime Trace
+              </div>
+              <span class="badge badge-green" id="prover-runtime-badge">ONLINE</span>
+            </div>
+            <div class="console-body" id="console-trace-log">
+[init] VeriTx host runner initialized.
+[info] Sibling go-zkvm host-ffi loaded with Apple Silicon Metal GPU acceleration.
+[ready] Witness ready. Click "Execute Derivation & Trace" to run.
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- TAB 2: INTERACTIVE PROVER & DERIVATION STUDIO -->
-    <section class="tab-pane" id="tab-prover">
-      <div class="two-column-layout">
-        <!-- Left: Controls & Input -->
-        <div class="left-col">
-          <div class="glass-panel input-card">
-            <div class="panel-header">
-              <h3>Private Witness Configuration</h3>
-              <div class="preset-selector">
-                <label>Presets:</label>
-                <select id="preset-select" onchange="loadPreset(this.value)">
-                  <option value="vector1">BIP-32 Test Vector 1 (m/86'/0'/0'/0/0)</option>
-                  <option value="vector2">BIP-32 Test Vector 2 (Custom)</option>
-                  <option value="hardened_sample">Hardened-Only Test Vector</option>
-                  <option value="random">Generate Random 256-bit Seed</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="input-seed">
-                <span>Private BIP-32 Seed (Hex)</span>
-                <span class="label-helper" id="seed-len-label">16 bytes (32 hex chars)</span>
-              </label>
-              <div class="input-with-action">
-                <input type="text" id="input-seed" class="mono-input" spellcheck="false" value="000102030405060708090a0b0c0d0e0f">
-                <button class="btn btn-sm" onclick="generateRandomSeed()" title="Generate Random">🎲</button>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="input-path">
-                <span>BIP-32 Derivation Path</span>
-                <span class="label-helper">BIP-86 Taproot Standard</span>
-              </label>
-              <input type="text" id="input-path" class="mono-input" spellcheck="false" value="m/86'/0'/0'/0/0">
-            </div>
-
-            <div class="form-row">
-              <div class="checkbox-group">
-                <label class="custom-checkbox">
-                  <input type="checkbox" id="check-bip86" checked>
-                  <span class="checkmark"></span>
-                  <span class="check-text">Enforce BIP-86 Path Policy (Flag 0x01)</span>
-                </label>
-              </div>
-              <div class="receipt-kind-select">
-                <label>Receipt Mode:</label>
-                <select id="select-receipt-kind">
-                  <option value="composite">Composite (Fast Prover, ~1.8 MB)</option>
-                  <option value="succinct">Succinct (Recursive SNARK, ~223 KB)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <button class="btn btn-primary btn-large" id="btn-run-derive" onclick="triggerDerivation()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Derive Taproot Claim & Simulate zkVM
-              </button>
-            </div>
-          </div>
-
-          <!-- zkVM Guest Execution Status Animation -->
-          <div class="glass-panel execution-terminal" id="prover-terminal">
-            <div class="terminal-header">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <div class="terminal-title">RISC Zero zkVM Execution Monitor</div>
-              <div class="terminal-status" id="terminal-badge">IDLE</div>
-            </div>
-            <div class="terminal-body mono-text" id="terminal-log">
-[init] VeriTx Prover Host initialized.
-[info] Sibling go-zkvm host-ffi loaded with Apple Silicon Metal acceleration.
-[ready] Awaiting witness inputs...
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Cryptographic Output & Journal Inspector -->
-        <div class="right-col">
-          <!-- Public Claim Card -->
-          <div class="glass-panel output-card">
-            <div class="panel-header">
-              <h3>Derived Public Statement</h3>
-              <span class="badge-tag green">PUBLIC JOURNAL</span>
-            </div>
-
-            <div class="output-item">
-              <div class="output-label">
-                <span>Taproot Output Key (Q) — 32 Bytes</span>
-                <button class="btn-copy" onclick="copyText('val-output-key')">Copy</button>
-              </div>
-              <div class="output-val mono-box" id="val-output-key">00324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee6</div>
-            </div>
-
-            <div class="output-item">
-              <div class="output-label">
-                <span>Path Commitment Hash (C) — 32 Bytes</span>
-                <button class="btn-copy" onclick="copyText('val-path-commitment')">Copy</button>
-              </div>
-              <div class="output-val mono-box" id="val-path-commitment">4c7de33d397de2c231e7c2a7f53e5b581ee3c20073ea79ee4afaab56de11f74b</div>
-            </div>
-
-            <div class="output-row-two">
-              <div class="output-item">
-                <div class="output-label"><span>Internal Key (P)</span></div>
-                <div class="output-val mono-box-sm" id="val-internal-key">8724f200544f593846c3a868faa13cfc...</div>
-              </div>
-              <div class="output-item">
-                <div class="output-label"><span>Policy Flags</span></div>
-                <div class="output-val mono-box-sm" id="val-flags">0x00000001 (BIP-86 Enabled)</div>
-              </div>
-            </div>
-
-            <div class="output-item">
-              <div class="output-label"><span>Bitcoin Mainnet Taproot Address (P2TR)</span></div>
-              <div class="output-val mono-box highlight" id="val-address">bc1pqqsqqzqqsqqqq...</div>
-            </div>
-          </div>
-
-          <!-- 72-Byte Journal Memory Layout Breakdown -->
-          <div class="glass-panel journal-breakdown-card">
-            <div class="panel-header">
-              <h4>72-Byte VeriTx Journal Structure</h4>
-              <span class="sub-label">Binary STARK Public Output</span>
-            </div>
-
-            <div class="journal-strip">
-              <div class="strip-segment seg-version" title="Bytes 0..3: Version (LE uint32)">
-                <span class="seg-title">Version</span>
-                <span class="seg-bytes">4B</span>
-              </div>
-              <div class="strip-segment seg-flags" title="Bytes 4..7: Flags (LE uint32)">
-                <span class="seg-title">Flags</span>
-                <span class="seg-bytes">4B</span>
-              </div>
-              <div class="strip-segment seg-key" title="Bytes 8..39: Taproot Output Key (32B)">
-                <span class="seg-title">Taproot Output Key (K)</span>
-                <span class="seg-bytes">32 Bytes</span>
-              </div>
-              <div class="strip-segment seg-path" title="Bytes 40..71: Path Commitment (32B)">
-                <span class="seg-title">Path Commitment (C)</span>
-                <span class="seg-bytes">32 Bytes</span>
-              </div>
-            </div>
-
-            <div class="journal-hex-display">
-              <div class="hex-header">Raw Journal Hex Stream (72 Bytes):</div>
-              <div class="hex-stream mono-text" id="val-raw-journal">010000000100000000324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee64c7de33d397de2c231e7c2a7f53e5b581ee3c20073ea79ee4afaab56de11f74b</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: PROOF LANES & BENCHMARKS -->
+    <!-- ==========================================================================
+         TAB 2: PROOF LANES & BENCHMARKS
+         ========================================================================== -->
     <section class="tab-pane" id="tab-lanes">
-      <div class="section-title-wrap">
-        <h2>Three Proof Lanes Architecture & Benchmarks</h2>
-        <p>Optimizing between full cryptographic statement strength and ultra-fast proving speeds</p>
+      <div class="section-header">
+        <div class="section-header-text">
+          <h2>Proof Lanes & Performance Architecture</h2>
+          <p>Analyzing the performance impact of avoiding elliptic curve scalar multiplications inside the zkVM.</p>
+        </div>
       </div>
 
-      <div class="lanes-matrix-grid">
+      <!-- 3 Lanes Grid -->
+      <div class="lanes-grid">
         <!-- Lane 1: Full Taproot -->
-        <div class="lane-card glass-panel highlight-purple">
-          <div class="lane-header">
-            <span class="lane-badge">LANE 1</span>
-            <h3>Full Taproot Lane</h3>
-            <p class="lane-desc">Proves knowledge of master seed + full path directly to on-chain BIP-86 Taproot key.</p>
+        <div class="lane-card">
+          <div class="lane-top">
+            <span class="badge badge-purple">LANE 1</span>
+            <span class="form-helper">Full Statement</span>
           </div>
-          <div class="lane-statement">
-            <code>s, p ⊢ BIP86(BIP32(s, p))</code>
-          </div>
-          <div class="lane-stats">
-            <div class="stat-row">
-              <span>EC Multiplications</span>
-              <span class="stat-val red">Full Point Mult</span>
-            </div>
-            <div class="stat-row">
-              <span>Composite Prove Time</span>
-              <span class="stat-val">49.32s</span>
-            </div>
-            <div class="stat-row">
-              <span>Succinct Prove Time</span>
-              <span class="stat-val">64.30s</span>
-            </div>
-            <div class="stat-row">
-              <span>Proof Seal Size</span>
-              <span class="stat-val">1.79 MB / 222 KB</span>
-            </div>
-            <div class="stat-row">
-              <span>Peak RAM (RSS)</span>
-              <span class="stat-val">11.91 GB</span>
-            </div>
-            <div class="stat-row">
-              <span>Verify Time</span>
-              <span class="stat-val green">0.10s</span>
-            </div>
-          </div>
-          <div class="lane-footer">
-            <span class="use-case-tag">Consensus-Ready Soft Fork Rule</span>
-          </div>
+          <h3 class="lane-title">Full Taproot Lane</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Proves seed + full path to BIP-86 Taproot output key.</p>
+          <div class="lane-statement">s, p ⊢ BIP86(BIP32(s, p))</div>
+          <table class="lane-table">
+            <tr><td>EC Multiplications</td><td style="color: var(--accent-red);">Full Point Mult</td></tr>
+            <tr><td>Composite Prove Time</td><td>49.32s</td></tr>
+            <tr><td>Succinct Prove Time</td><td>64.30s</td></tr>
+            <tr><td>Proof Seal Size</td><td>1.79 MB / 222 KB</td></tr>
+            <tr><td>Peak RAM (RSS)</td><td>11.91 GB</td></tr>
+            <tr><td>Verify Time</td><td style="color: var(--accent-green);">0.10s</td></tr>
+          </table>
+          <span class="badge badge-gray" style="align-self: flex-start;">Consensus Soft-Fork Rule</span>
         </div>
 
         <!-- Lane 2: Hardened xpub -->
-        <div class="lane-card glass-panel highlight-cyan">
-          <div class="lane-header">
-            <span class="lane-badge">LANE 2</span>
-            <h3>Hardened xpub Lane</h3>
-            <p class="lane-desc">Proves parent xpriv to child compressed pubkey via hardened-only derivation.</p>
+        <div class="lane-card">
+          <div class="lane-top">
+            <span class="badge badge-blue">LANE 2</span>
+            <span class="form-helper">Intermediate</span>
           </div>
-          <div class="lane-statement">
-            <code>xpriv, p ⊢ ChildPub(xpriv, p)</code>
-          </div>
-          <div class="lane-stats">
-            <div class="stat-row">
-              <span>EC Multiplications</span>
-              <span class="stat-val cyan">Single Base Mult</span>
-            </div>
-            <div class="stat-row">
-              <span>Composite Prove Time</span>
-              <span class="stat-val">14.63s</span>
-            </div>
-            <div class="stat-row">
-              <span>Succinct Prove Time</span>
-              <span class="stat-val">17.29s</span>
-            </div>
-            <div class="stat-row">
-              <span>Proof Seal Size</span>
-              <span class="stat-val">513 KB / 222 KB</span>
-            </div>
-            <div class="stat-row">
-              <span>Peak RAM (RSS)</span>
-              <span class="stat-val">6.8 GB</span>
-            </div>
-            <div class="stat-row">
-              <span>Verify Time</span>
-              <span class="stat-val green">0.05s</span>
-            </div>
-          </div>
-          <div class="lane-footer">
-            <span class="use-case-tag">Wallet Recovery & HD Accounts</span>
-          </div>
+          <h3 class="lane-title">Hardened xpub Lane</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Proves parent xpriv to child compressed pubkey.</p>
+          <div class="lane-statement">xpriv, p ⊢ ChildPub(xpriv, p)</div>
+          <table class="lane-table">
+            <tr><td>EC Multiplications</td><td style="color: var(--accent-primary);">Single Base Mult</td></tr>
+            <tr><td>Composite Prove Time</td><td>14.63s</td></tr>
+            <tr><td>Succinct Prove Time</td><td>17.29s</td></tr>
+            <tr><td>Proof Seal Size</td><td>513 KB / 222 KB</td></tr>
+            <tr><td>Peak RAM (RSS)</td><td>6.80 GB</td></tr>
+            <tr><td>Verify Time</td><td style="color: var(--accent-green);">0.05s</td></tr>
+          </table>
+          <span class="badge badge-gray" style="align-self: flex-start;">HD Account Migration</span>
         </div>
 
         <!-- Lane 3: Hardened xpriv -->
-        <div class="lane-card glass-panel highlight-green">
-          <div class="lane-header">
-            <span class="lane-badge best-badge">FASTEST (~2s)</span>
-            <h3>Hardened xpriv Lane</h3>
-            <p class="lane-desc">Proves single hardened CKDpriv step. Zero elliptic curve math inside zkVM.</p>
+        <div class="lane-card featured">
+          <div class="lane-top">
+            <span class="badge badge-green">LANE 3 · FASTEST (~2s)</span>
+            <span class="form-helper">Pure Hash</span>
           </div>
-          <div class="lane-statement">
-            <code>xpriv, i ⊢ HMAC-SHA512(xpriv, i)</code>
+          <h3 class="lane-title">Hardened xpriv Lane</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Proves single hardened CKDpriv step. Zero elliptic curve math.</p>
+          <div class="lane-statement">xpriv, i ⊢ HMAC-SHA512(xpriv, i)</div>
+          <table class="lane-table">
+            <tr><td>EC Multiplications</td><td style="color: var(--accent-green);">0 (Pure Hash)</td></tr>
+            <tr><td>Composite Prove Time</td><td style="color: var(--accent-green);">1.98s</td></tr>
+            <tr><td>Succinct Prove Time</td><td>2.84s</td></tr>
+            <tr><td>Proof Seal Size</td><td style="color: var(--accent-green);">234 KB</td></tr>
+            <tr><td>Peak RAM (RSS)</td><td style="color: var(--accent-green);">3.14 GB</td></tr>
+            <tr><td>Verify Time</td><td style="color: var(--accent-green);">0.02s</td></tr>
+          </table>
+          <span class="badge badge-green" style="align-self: flex-start;">Optimal Batch Leaf</span>
+        </div>
+      </div>
+
+      <!-- Interactive Calculator -->
+      <div class="calc-card">
+        <div class="card-header">
+          <span class="card-title">Interactive Batch Scaling Estimator</span>
+          <span class="card-subtitle">Simulate aggregate prove time and proof size for batch volumes</span>
+        </div>
+
+        <div class="calc-row">
+          <div class="slider-container">
+            <label class="form-label">
+              <span>Simulated Number of Inputs / Coins: <strong id="calc-tx-count-label">16</strong></span>
+            </label>
+            <input type="range" min="1" max="64" value="16" id="calc-range-tx" oninput="updateCalculator(this.value)">
+            <div class="slider-labels">
+              <span>1 UTXO</span>
+              <span>16 UTXOs</span>
+              <span>32 UTXOs</span>
+              <span>64 UTXOs</span>
+            </div>
           </div>
-          <div class="lane-stats">
-            <div class="stat-row">
-              <span>EC Multiplications</span>
-              <span class="stat-val green">0 (None - Pure Hash)</span>
+
+          <div class="calc-results-grid">
+            <div class="calc-result-box">
+              <div class="calc-result-val" id="calc-val-time">31.6s</div>
+              <div class="calc-result-label">Hardened xpriv Aggregate</div>
             </div>
-            <div class="stat-row">
-              <span>Composite Prove Time</span>
-              <span class="stat-val green">1.98s</span>
+            <div class="calc-result-box">
+              <div class="calc-result-val" id="calc-val-size">224 KB</div>
+              <div class="calc-result-label">Succinct Batch Receipt</div>
             </div>
-            <div class="stat-row">
-              <span>Succinct Prove Time</span>
-              <span class="stat-val">2.84s</span>
+            <div class="calc-result-box">
+              <div class="calc-result-val" id="calc-val-ram">5.75 GB</div>
+              <div class="calc-result-label">Nested Peak RAM</div>
             </div>
-            <div class="stat-row">
-              <span>Proof Seal Size</span>
-              <span class="stat-val green">234 KB (Near Floor)</span>
-            </div>
-            <div class="stat-row">
-              <span>Peak RAM (RSS)</span>
-              <span class="stat-val green">3.14 GB</span>
-            </div>
-            <div class="stat-row">
-              <span>Verify Time</span>
-              <span class="stat-val green">0.02s</span>
-            </div>
-          </div>
-          <div class="lane-footer">
-            <span class="use-case-tag">Ideal Leaf for Batch Aggregation</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 4: RECURSIVE BATCH AGGREGATION & MERKLE TREE -->
+    <!-- ==========================================================================
+         TAB 3: RECURSIVE BATCH MERKLE TREE
+         ========================================================================== -->
     <section class="tab-pane" id="tab-batch">
-      <div class="section-title-wrap">
-        <h2>Recursive Composition & Batch Merkle Tree</h2>
-        <p>Aggregating N leaf receipts into a single succinct Merkle proof via RISC Zero recursive composition</p>
+      <div class="section-header">
+        <div class="section-header-text">
+          <h2>Recursive Batch Merkle Tree Engine</h2>
+          <p>Verifying N independent leaf claims recursively into a single fixed 223 KB receipt with domain-separated inclusion proofs.</p>
+        </div>
       </div>
 
-      <div class="batch-controls-panel glass-panel">
-        <div class="controls-left">
-          <label>Batch Size (Leaves N):</label>
-          <div class="btn-group">
-            <button class="btn btn-pill" onclick="setBatchN(2)">N = 2</button>
-            <button class="btn btn-pill active" onclick="setBatchN(4)">N = 4</button>
-            <button class="btn btn-pill" onclick="setBatchN(8)">N = 8</button>
-            <button class="btn btn-pill" onclick="setBatchN(16)">N = 16</button>
+      <!-- Batch Toolbar -->
+      <div class="batch-toolbar">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Batch Size:</span>
+          <div style="display: flex; gap: 4px;">
+            <button class="btn btn-secondary btn-sm" onclick="setBatchN(2)">N = 2</button>
+            <button class="btn btn-primary btn-sm" onclick="setBatchN(4)" id="btn-batch-4">N = 4</button>
+            <button class="btn btn-secondary btn-sm" onclick="setBatchN(8)">N = 8</button>
+            <button class="btn btn-secondary btn-sm" onclick="setBatchN(16)">N = 16</button>
           </div>
         </div>
-        <div class="controls-right">
-          <div class="batch-summary-stat">
-            <span class="stat-sub">Top Merkle Root:</span>
-            <span class="stat-hex mono-text" id="batch-merkle-root">Generating...</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Merkle Root:</span>
+          <span class="code-box highlight" style="padding: 4px 10px; font-size: 0.76rem;" id="batch-top-root">Computing...</span>
+        </div>
+      </div>
+
+      <!-- Merkle Tree Canvas -->
+      <div class="tree-canvas-card">
+        <div style="margin-bottom: 20px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+          Click any leaf node below to trace its mathematical Merkle audit path to the top root.
+        </div>
+        <div class="tree-wrapper" id="merkle-tree-container">
+          <!-- Dynamic Tree Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Sibling Inclusion Inspector -->
+      <div class="inclusion-inspect-card card">
+        <div>
+          <div class="card-header">
+            <span class="card-title" id="inspect-leaf-title">Selected Leaf #0 Inclusion Audit</span>
+            <span class="badge badge-blue">Audit Path</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Interactive Merkle Tree Canvas -->
-      <div class="merkle-container glass-panel">
-        <div class="merkle-instructions">
-          <span>💡 <strong>Interactive Tree:</strong> Click any leaf below to inspect and illuminate its Merkle Inclusion Audit Path from Leaf to Root.</span>
-        </div>
-        <div class="merkle-tree-wrapper" id="merkle-tree-view">
-          <!-- Dynamic Tree Rendered by app.js -->
-        </div>
-      </div>
-
-      <!-- Disclosed Leaf & Inclusion Proof Panel -->
-      <div class="glass-panel inclusion-proof-panel" id="inclusion-panel">
-        <div class="panel-header">
-          <h4>Selected Leaf Inclusion Proof</h4>
-          <span class="badge-tag cyan" id="disclosed-leaf-index">Leaf #0</span>
-        </div>
-        <div class="proof-content-grid">
-          <div class="proof-column">
-            <div class="info-label">Domain-Separated Leaf Hash:</div>
-            <div class="mono-box" id="disclosed-leaf-hash">--</div>
-            <div class="code-explain">
-              <code>SHA256(0x00 || "bip32-pq-zkp:batch-leaf:v1" || index || leaf_journal)</code>
+          <div class="data-display-row">
+            <div class="data-display-label"><span>Domain-Separated Leaf Hash</span></div>
+            <div class="code-box" id="inspect-leaf-hash">--</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono);">
+              SHA256(0x00 || "bip32-pq-zkp:batch-leaf:v1" || index || journal)
             </div>
           </div>
-          <div class="proof-column">
-            <div class="info-label">Audit Path Sibling Hashes:</div>
-            <div class="mono-box-sm" id="disclosed-siblings">--</div>
-            <div class="verification-badge" id="proof-verify-badge">
-              <span class="check">✓</span> Mathematically Reconstructs Root
-            </div>
+        </div>
+
+        <div>
+          <div class="card-header">
+            <span class="card-title">Cryptographic Verification</span>
+            <span class="badge badge-green" id="inspect-verify-status">✓ Mathematically Valid</span>
+          </div>
+          <div class="data-display-row">
+            <div class="data-display-label"><span>Sibling Path Hashes</span></div>
+            <div class="code-box mono" id="inspect-siblings-box">--</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 5: RECEIPT & CLAIM VERIFIER -->
+    <!-- ==========================================================================
+         TAB 4: ARTIFACT & TAMPER VERIFIER
+         ========================================================================== -->
     <section class="tab-pane" id="tab-verifier">
-      <div class="section-title-wrap">
-        <h2>STARK Receipt & Verifier Engine</h2>
-        <p>Independent verification of STARK receipt proofs against guest Image ID and public claims</p>
+      <div class="section-header">
+        <div class="section-header-text">
+          <h2>Cryptographic Artifact & Tamper Verifier</h2>
+          <p>Verify STARK receipts against the pinned guest Image ID, or inject faults to observe real verification rejections.</p>
+        </div>
       </div>
 
-      <div class="verifier-grid">
-        <div class="glass-panel verifier-card">
-          <div class="panel-header">
-            <h3>Verifier Specification</h3>
-            <span class="badge-tag green">OFFLINE VERIFIABLE</span>
+      <div class="verifier-split">
+        <!-- Left: Form & Tamper Controls -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Verification Invariants</span>
+            <span class="badge badge-gray">Offline Verifiable</span>
           </div>
-          <div class="verifier-form">
-            <div class="form-group">
-              <label>Expected Guest Image ID (Taproot Lane):</label>
-              <div class="mono-box highlight" id="verifier-image-id">8a6a2c27dd54d8fa0f99a332b57cb105f88472d977c84bfac077cbe70907a690</div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <span>Expected Guest Image ID</span>
+              <span class="badge badge-green">Taproot Binary</span>
+            </label>
+            <input type="text" class="form-input mono" id="verify-input-image" value="8a6a2c27dd54d8fa0f99a332b57cb105f88472d977c84bfac077cbe70907a690">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">72-Byte Claim Journal Stream</label>
+            <textarea class="form-input mono" id="verify-input-journal" rows="3" style="resize: vertical;">010000000100000000324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee64c7de33d397de2c231e7c2a7f53e5b581ee3c20073ea79ee4afaab56de11f74b</textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Expected Taproot Output Key</label>
+            <input type="text" class="form-input mono" id="verify-input-key" value="00324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee6">
+          </div>
+
+          <!-- Fault Injection Playground -->
+          <div style="margin-top: 16px;">
+            <span class="form-label"><span>Interactive Fault Injection (Tamper Lab)</span></span>
+            <div class="tamper-actions-bar">
+              <button class="btn btn-danger btn-sm" onclick="tamperJournalKey()">Flip 1-Bit in Output Key</button>
+              <button class="btn btn-danger btn-sm" onclick="tamperJournalPath()">Corrupt Path Commitment</button>
+              <button class="btn btn-danger btn-sm" onclick="tamperImageID()">Spoof Image ID</button>
+              <button class="btn btn-secondary btn-sm" onclick="resetValidClaim()">Restore Valid Claim</button>
             </div>
-            <div class="form-group">
-              <label>Loaded Receipt Artifact:</label>
-              <div class="mono-box">artifacts/bip32-test-vector.receipt (Composite STARK Receipt)</div>
-            </div>
-            <div class="form-group">
-              <label>Associated Public Claim File:</label>
-              <div class="mono-box">artifacts/bip32-test-vector.claim.json</div>
-            </div>
-            <button class="btn btn-primary" onclick="runVerifierSimulation()">
+          </div>
+
+          <div style="margin-top: 16px;">
+            <button class="btn btn-primary" style="width: 100%;" onclick="runCryptographicVerification()">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               Execute Cryptographic Verification
             </button>
           </div>
         </div>
 
-        <div class="glass-panel claim-json-card">
-          <div class="panel-header">
-            <h3>Canonical claim.json Artifact</h3>
-            <button class="btn btn-sm" onclick="downloadClaimJson()">Download JSON</button>
+        <!-- Right: Verification Report & Checks Breakdown -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Verification Result</span>
+            <span class="badge badge-green" id="verify-status-badge">READY</span>
           </div>
-          <pre class="json-code mono-text" id="claim-json-preview">
-{
-  "version": 1,
-  "guest_image_id": "8a6a2c27dd54d8fa0f99a332b57cb105f88472d977c84bfac077cbe70907a690",
-  "receipt_kind": "composite",
-  "proof_seal_size": 1797880,
-  "claim": {
-    "version": 1,
-    "flags": 1,
-    "require_bip86": true,
-    "taproot_output_key": "00324bf6fa47a8d70cb5519957dd54a02b385c0ead8e4f92f9f07f992b288ee6",
-    "path_commitment": "4c7de33d397de2c231e7c2a7f53e5b581ee3c20073ea79ee4afaab56de11f74b"
-  }
-}
-          </pre>
+
+          <div id="verify-alert-box" style="padding: 12px; border-radius: 6px; font-size: 0.82rem; margin-bottom: 14px; background: var(--bg-subtle); color: var(--text-secondary);">
+            Click "Execute Cryptographic Verification" to test journal deserialization, binary image matching, and key equality.
+          </div>
+
+          <div class="checks-list" id="verify-checks-container">
+            <div class="check-item">
+              <div>
+                <div class="check-name">1. Journal Header & Version (4B)</div>
+                <div class="check-detail">Checks Version == 1</div>
+              </div>
+              <span class="badge badge-gray">Pending</span>
+            </div>
+            <div class="check-item">
+              <div>
+                <div class="check-name">2. Guest Image ID Verification</div>
+                <div class="check-detail">Validates STARK proof against pinned binary image</div>
+              </div>
+              <span class="badge badge-gray">Pending</span>
+            </div>
+            <div class="check-item">
+              <div>
+                <div class="check-name">3. BIP-86 Policy Enforcement Flag</div>
+                <div class="check-detail">Flag bit 0x01 enforcement check</div>
+              </div>
+              <span class="badge badge-gray">Pending</span>
+            </div>
+            <div class="check-item">
+              <div>
+                <div class="check-name">4. Taproot Output Key Invariant Match</div>
+                <div class="check-detail">32-byte public key equality check</div>
+              </div>
+              <span class="badge badge-gray">Pending</span>
+            </div>
+            <div class="check-item">
+              <div>
+                <div class="check-name">5. Derivation Path Commitment Check</div>
+                <div class="check-detail">Domain-separated path hash equality</div>
+              </div>
+              <span class="badge badge-gray">Pending</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- Clean App Footer -->
   <footer class="app-footer">
     <div class="footer-container">
-      <div class="footer-left">
-        <strong>VeriTx</strong> — Post-Quantum Zero-Knowledge BIP-32 Seed Knowledge Verification System for Bitcoin.
+      <div>
+        <strong>VeriTx</strong> — Post-Quantum Zero-Knowledge Seed Verification Engine for Bitcoin Taproot.
       </div>
-      <div class="footer-right">
-        <span>RISC Zero zkVM</span> • <span>BIP-86 Taproot</span> • <span>STARK Proofs</span>
+      <div>
+        RISC Zero zkVM · BIP-32 · BIP-86 · STARK Proofs
       </div>
     </div>
   </footer>
